@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 21:15:23 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/06 21:22:07 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/07 14:10:47 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,14 @@ typedef struct s_stack_node
     struct  s_stack_node    *prev;
 } t_stack_node;
 
+// handle errors 
 
+// stack initiation
+
+// nodes init
+
+//stack utils
+
+//commands 
+// algorithmes
 #endif
