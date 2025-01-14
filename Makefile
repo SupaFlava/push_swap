@@ -1,32 +1,37 @@
-CFLAGS = -Wall - Wextra -Werror -I $(LIBFT_DIR)
-AR = ar
-LIBFT_DIR = ./libft
-NAME = libftprintf.a
-INCLUDES = -I includes
-SRC = push_swap.c
-OBJ = $(SRC:.c=.o)
-LIBFT = $(LIBFT_DIR)/libft.a
+# Compiler and flags
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -I $(INCDIR)
 
+# Directories
+SRCDIR = srcs
+INCDIR = includes
+LIBFT = $(LIBDIR)/libft.a
+LIBDIR = libft
+
+# Files
+SRCS = $(wildcard $(SRCDIR)/*.c)
+OBJS = $(SRCS:.c=.o)
+
+# Output executable
+NAME = push_swap
+
+# Rules
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ)
-	cp $(LIBFT) $(NAME)
-	$(AR) rcs $(NAME) $(OBJ) $(LIBFT)
-%.o: %.c
-	echo "Compiling $<"
-	cc $(CFLAGS) $(INLCUDES) -C $< -o $@
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 $(LIBFT):
-	make -C $(LIBFT_DIR)
+	make -C $(LIBDIR)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
-	make clean -c $(LIBFT_DIR)
+	rm -f $(OBJS)
+	make -C $(LIBDIR) clean
 
 fclean: clean
 	rm -f $(NAME)
-	make fclean -C $(LIBFT_DIR)
+	make -C $(LIBDIR) fclean
 
 re: fclean all
-
-.PHONY: all clean fclean re
