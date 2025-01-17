@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:16:42 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/15 10:16:03 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/15 16:59:20 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void    current_index(t_stack_node *stack)
     {
         stack->index = i;
         if (i <= median)
-            stack->abode_median = true;
+            stack->above_median = true;
         else
-            stack->abode_median = false;
+            stack->above_median = false;
         stack = stack->next;
         i++;
     }
@@ -70,19 +70,39 @@ static void cost_analysis(t_stack_node *a, t_stack_node *b)
     while (a)
     {
         a->push_coast = a->index;
-        if(!(a->abode_median))
+        if(!(a->above_median))
             a->push_coast = len_a - (a->index);
-        if (a->target_node->abode_median)
+        if (a->target_node->above_median)
             a->push_coast += a->target_node->index;
         else
             a->push_coast += len_b - (a->target_node->index);
         a = a->next;
     }
 }
-void initiate_nodes_a(t_stack_node *a, t_stack_node *b)
+void    set_cheapest(t_stack_node *stack)
+{
+    long    cheapest_value;
+    t_stack_node    *cheapest_node;
+    
+    if(!stack)
+        return ;
+    cheapest_value = LONG_MAX;
+    while (stack)
+    {
+        if (stack->push_coast < cheapest_value)
+        {
+            cheapest_value = stack->push_coast;
+            cheapest_node = stack;
+        }
+        stack = stack->next;
+    }
+    cheapest_node->cheapest = true;
+}
+void initialize_nodes_a(t_stack_node *a, t_stack_node *b)
 {
     current_index(a);
     current_index(b);
     set_target_a(a, b);
     const_analysis_a(a,b);
+    set_cheapest(a);
 }

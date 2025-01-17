@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:25:35 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/14 14:06:44 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/15 19:25:34 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void    pa(t_stack_node **a, t_stack_node **b, bool print)
 {
     push(a, b);
     if(!print)
-        ft_printf("pa\n");
+        printf("pa\n");
 }
 void    pb(t_stack_node **a, t_stack_node **b, bool print)
 {
     push(b, a);
     if (!print)
-        ft_printf("pb\n");
+        printf("pb\n");
 }

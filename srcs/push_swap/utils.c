@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 09:25:12 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/14 11:22:53 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/15 15:31:22 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,23 @@ t_stack_node *find_last(t_stack_node *stack)
     while(stack->next)
         stack = stack->next;
     return (stack);
+}
+t_stack_node *find_min(t_stack_node *stack)
+{
+    long    min;
+    t_stack_node *min_node;
+    
+    if (!stack)
+        return (NULL);
+    min = LONG_MAX;
+    while (stack)
+    {
+        if (stack->nbr < min)
+        {
+            min = stack->nbr;
+            min_node = stack;
+        }
+        stack = stack->next;
+    }
+    return (min_node);
 }

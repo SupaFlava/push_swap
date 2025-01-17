@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:43:12 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/14 13:08:48 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/15 19:27:37 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,19 @@ void    rra(t_stack_node **a, bool print)
 {
     rev_rotate(a);
     if (!print)
-        ft_printf("rra\n");
+        printf("rra\n");
 }
 
 void    rrb(t_stack_node **b, bool print)
 {
     rev_rotate(b);
         if(!print)
-            ft_printf("rrb\n");
+            printf("rrb\n");
 }
 void    rrr(t_stack_node **a,t_stack_node **b,bool print)
 {
     rev_rotate(a);
     rev_rotate(b);
     if (!print)
-        fr_printf("rrr\n");
+        printf("rrr\n");
 }

@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 21:15:23 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/13 21:23:13 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/15 19:26:11 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,53 @@
 # include <stdbool.h>
 # include <limits.h>
 # include "../libft/libft.h"
+# include <stdio.h>
 // to include 
 typedef struct s_stack_node
 {
     int nbr;
     int index;
     int push_coast;
-    bool    abode_median;
+    bool    above_median;
     bool    cheapest;
     struct  s_stack_node  *target_node;
     struct  s_stack_node   *next;
     struct  s_stack_node    *prev;
 } t_stack_node;
 
-// stack initiation
+int				syntax_error(char *string); 
+int				duplicate_error(t_stack_node *a, int n);
+void			free_stack(t_stack_node **stack);
+void			free_error(t_stack_node **a);
 
-// nodes init
+void			init_stack_a(t_stack_node **a, char **argv); 
+char			**split(char *s, char c);
 
-//stack utils
+void			initialize_nodes_a(t_stack_node *a, t_stack_node *b); 
+void			init_nodes_b(t_stack_node *a, t_stack_node *b); 
+void			current_index(t_stack_node *stack);
+void			set_cheapest(t_stack_node *stack);
+t_stack_node	*get_cheapest(t_stack_node *stack);
+void			prep_for_push(t_stack_node **s, t_stack_node *n, char c);
 
-//commands 
-// algorithmes
+
+int				stack_len(t_stack_node *stack); 
+t_stack_node	*find_last(t_stack_node *stack); 
+bool			is_sorted(t_stack_node *stack);
+t_stack_node	*find_min(t_stack_node *stack); 
+t_stack_node	*find_max(t_stack_node *stack);
+void			sa(t_stack_node **a, bool print);
+void			sb(t_stack_node **b, bool print);
+void			ss(t_stack_node **a, t_stack_node **b, bool print);
+void			ra(t_stack_node **a, bool print);
+void			rb(t_stack_node **b, bool print);
+void			rr(t_stack_node **a, t_stack_node **b, bool print);
+void			rra(t_stack_node **a, bool print);
+void			rrb(t_stack_node **b, bool print);
+void			rrr(t_stack_node **a, t_stack_node **b, bool print);
+void			pa(t_stack_node **a, t_stack_node **b, bool print);
+void			pb(t_stack_node **b, t_stack_node **a, bool print);
+
+t_stack_node *find_min(t_stack_node *stack);
+
 #endif

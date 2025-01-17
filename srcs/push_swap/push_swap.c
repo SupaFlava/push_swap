@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 11:46:28 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/14 13:10:53 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/15 15:38:33 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ int	main(int argc, char **argv)
 		else
 			sort_stacks(&a, &b);
 	}
+	free_stack(&a);
 	return (0);
 }
