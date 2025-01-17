@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 09:25:12 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/15 15:31:22 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/17 12:09:00 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int stack_len(t_stack_node *stack)
 {
     int i;
      if (!stack)
-        return(NULL);   
+        return(1);   
     i = 0;
     while(stack->next)
     {
@@ -59,7 +59,7 @@ t_stack_node    *find_max(t_stack_node *stack)
 t_stack_node *find_last(t_stack_node *stack)
 {
     if (!stack)
-        return;
+        return (NULL);
     while(stack->next)
         stack = stack->next;
     return (stack);

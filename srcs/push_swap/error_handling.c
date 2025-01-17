@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:39:30 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/15 19:25:34 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/17 11:45:56 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int syntax_error(char *string)
 {
     if (!(*string == '+'
-            || *string == "-" 
+            || *string == '-' 
             || (*string >= '0' && *string <= '9')))
         return (1);
     if ((*string == '+'|| *string == '-') && !(string[1] >= '0' && string[1] <='9'))

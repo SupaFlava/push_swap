@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:21:29 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/13 17:16:55 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/17 11:58:09 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char    **split(char *s, char c)
     i = 0;
     words_count = count_words(s, c);
     if (!words_count)
-        return (-1);
+        return (NULL);
     result_array = malloc(sizeof(char *) *(size_t)(words_count + 2));
     if (!result_array)
         return (NULL);

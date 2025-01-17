@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 21:15:23 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/15 19:26:11 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/17 11:57:31 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <limits.h>
 # include "../libft/libft.h"
 # include <stdio.h>
+# include <stdlib.h>
 // to include 
 typedef struct s_stack_node
 {
@@ -44,6 +45,8 @@ void			current_index(t_stack_node *stack);
 void			set_cheapest(t_stack_node *stack);
 t_stack_node	*get_cheapest(t_stack_node *stack);
 void			prep_for_push(t_stack_node **s, t_stack_node *n, char c);
+void			sort_three(t_stack_node **a);
+void    sort_stacks(t_stack_node **a, t_stack_node **b);
 
 
 int				stack_len(t_stack_node *stack); 

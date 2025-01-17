@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:16:42 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/15 16:59:20 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/17 15:57:04 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void set_target_a(t_stack_node *a, t_stack_node *b)
         a = a->next;
     }
 }
-static void cost_analysis(t_stack_node *a, t_stack_node *b)
+static void cost_analysis_a(t_stack_node *a, t_stack_node *b)
 {
     int len_a;
     int len_b;
@@ -103,6 +103,6 @@ void initialize_nodes_a(t_stack_node *a, t_stack_node *b)
     current_index(a);
     current_index(b);
     set_target_a(a, b);
-    const_analysis_a(a,b);
+    cost_analysis_a(a,b);
     set_cheapest(a);
 }

@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 11:46:28 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/15 15:38:33 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/17 11:56:41 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
-	
-	if(argc == 1 || (argc == 2 && !argv[1][0]))
+
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
 	else if (argc == 2)
 		argv = split(argv[1], ' ');
-	init_stack_a(&a, argv[1]);
+	init_stack_a(&a, &argv[1]);
 	if(!is_sorted(a))
 	{
 		if(stack_len(a) == 2)

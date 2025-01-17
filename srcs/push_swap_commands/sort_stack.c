@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:16:51 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/15 15:37:23 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/17 16:12:26 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static  void rotate_both(t_stack_node **a,t_stack_node **b, t_stack_node *cheape
     current_index(*a);
     current_index(*b);    
 }
-static void rev_retate_both(t_stack_node **a, t_stack_node **b, t_stack_node *cheapest_node)
+static void rev_rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *cheapest_node)
 {
     while(*b != cheapest_node->target_node && *a != cheapest_node)
     rrr(a, b, false);
@@ -44,14 +44,14 @@ static void move_a_to_b(t_stack_node **a, t_stack_node **b)
 }
 static void move_b_to_a(t_stack_node **a, t_stack_node **b)
 {
-    prep_for_push(a, (*b)->target_node, ' a');
+    prep_for_push(a, (*b)->target_node, 'a');
     pa(a, b ,false);
 }
 static void min_on_top(t_stack_node **a)
 {
-    while ((*a)->nbr != find_min((*a)->nbr))
+    while ((*a)->nbr != find_min(*a)->nbr)
     {
-        if(find_min((*a)->above_median))
+        if(find_min(*a)->above_median)
                 ra(a,false);
             else
                 rra(a,false);
@@ -62,19 +62,19 @@ void    sort_stacks(t_stack_node **a, t_stack_node **b)
 {
     int length_a;
     length_a = stack_len(*a);
-    if (length_a-- > 3 && !stack_sorted(*a))
-        pb(b, a , false);
-    if (length_a-- > 3 && !stack_sorted(*a))
-        pb(b, a , false);
-    while(length_a-- > 3 && !stack_sorted(*a))
-    {
-        initiate_nodes_a(*a, *b);
-        move_a_to_b(a,b);
+    while (length_a-- > 3 && *a && !is_sorted(*a)) {
+        pb(b, a, false);
+    }
+
+    // Process a and b
+    while (length_a-- > 3 && *a && !is_sorted(*a)) {
+        initialize_nodes_a(*a, *b);
+        move_a_to_b(a, b);
     }
     sort_three(a);
     while (*b)
     {
-        init_nodes_b(*a, b);
+        init_nodes_b(*a, *b);
         move_b_to_a(a,b);
     }
     current_index(*a);

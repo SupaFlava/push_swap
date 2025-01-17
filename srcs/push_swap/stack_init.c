@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 21:27:38 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/15 17:26:34 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/17 12:03:27 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,11 @@ void    init_stack_a(t_stack_node **a, char **argv)
     while(argv[i])
     {
         if (!argv[i]) // implement error and free
-        return (-1);
+        return ;
 
         number = ft_atol(argv[i]);
         if (number > INT_MAX || number < INT_MIN)
-            return(a);
+            return;
         append_node(a, (int) number);
         i++;
             
@@ -94,7 +94,7 @@ void    init_stack_a(t_stack_node **a, char **argv)
 
 void    prep_for_push(t_stack_node **stack, t_stack_node *top_node, char stack_name)
 {
-    while (*stack != 'a')
+    while (*stack != top_node)
     {
         if (stack_name == 'a')
         {
@@ -103,7 +103,7 @@ void    prep_for_push(t_stack_node **stack, t_stack_node *top_node, char stack_n
             else
                 rra(stack, false);
         }
-        else if (stack_name == "b")
+        else if (stack_name == 'b')
         {
             if (top_node->above_median)
                 rb(stack, false);
