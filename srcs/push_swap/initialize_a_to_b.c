@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:16:42 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/17 15:57:04 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/19 12:55:43 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void    current_index(t_stack_node *stack)
         else
             stack->above_median = false;
         stack = stack->next;
-        i++;
+        ++i;
     }
     
 }
@@ -38,6 +38,7 @@ static void set_target_a(t_stack_node *a, t_stack_node *b)
     t_stack_node *current_node_b;
     t_stack_node *target_node;
     long    best_match_index;
+
     while(a)
     {
         best_match_index = LONG_MIN;

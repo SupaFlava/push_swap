@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:16:51 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/17 16:12:26 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/19 12:40:50 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,13 @@ void    sort_stacks(t_stack_node **a, t_stack_node **b)
 {
     int length_a;
     length_a = stack_len(*a);
-    while (length_a-- > 3 && *a && !is_sorted(*a)) {
+    if (length_a-- > 3  && !is_sorted(*a))
         pb(b, a, false);
-    }
+	 if (length_a-- > 3 && !is_sorted(*a))
+        pb(b, a, false);
 
-    // Process a and b
-    while (length_a-- > 3 && *a && !is_sorted(*a)) {
+    if (length_a-- > 3 && !is_sorted(*a))
+	{
         initialize_nodes_a(*a, *b);
         move_a_to_b(a, b);
     }

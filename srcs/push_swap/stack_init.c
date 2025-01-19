@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 21:27:38 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/17 12:03:27 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/19 13:31:27 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,42 +20,44 @@ static  long ft_atol(const char *s)
     
     sign = 1;
     while (*s == ' ' || *s == '\t' || *s == '\n' || *s == '\r' || *s == '\v') 
-    {
         s++;
+    
      if (*s == '-' || *s == '+')
         {
             if (*s == '-')
                 sign = -1;
             s++;
         }
-    }
     while(ft_isdigit(*s))
-        result = result * 10 + (*s++ - '0');
+	{
+        result = result * 10 + (*s - '0');
+		s++;
+	}
     return (result * sign);
 }
 
-static void append_node(t_stack_node **stack, int n)
+static void append_node(t_stack_node **stack, int value)
 {
-    t_stack_node *node;
+    t_stack_node *new_node;
     t_stack_node *last_node;
     if(!stack)
         return;
-    node = malloc(sizeof(t_stack_node));
-    if (!node)
+    new_node = malloc(sizeof(t_stack_node));
+    if (!new_node)
         return ;
-    node->next = NULL;
-    node->nbr = n;
-    node->cheapest = 0;
+    new_node->nbr = value;
+    new_node->cheapest = 0;
+    new_node->next = NULL;
     if(!(*stack))
     {
-        *stack = node;
-        node->prev = NULL;
+        *stack = new_node;
+        new_node->prev = NULL;
     }
     else
     {
         last_node = find_last(*stack);
-        last_node->next = node;
-        node->prev = last_node;
+        last_node->next = new_node;
+        new_node->prev = last_node;
     }
     
 }
@@ -80,15 +82,15 @@ void    init_stack_a(t_stack_node **a, char **argv)
     i = 0;
     while(argv[i])
     {
-        if (!argv[i]) // implement error and free
-        return ;
-
-        number = ft_atol(argv[i]);
-        if (number > INT_MAX || number < INT_MIN)
-            return;
-        append_node(a, (int) number);
-        i++;
-            
+        if (syntax_error(argv[i]))
+			free_error(a);
+		number = ft_atol(argv[i]);
+		if (number > INT_MAX || number <  INT_MIN)
+			free_error(a);
+		if (duplicate_error(*a, (int)number))
+			free_error(a);
+		append_node(a, (int)number);
+		i++; 
     }
 }
 
