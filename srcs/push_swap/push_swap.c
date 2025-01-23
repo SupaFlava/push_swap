@@ -6,12 +6,19 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 11:46:28 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/19 13:17:55 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:55:46 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+
+char	**parse_arguments(int argc, char **argv)
+{
+	if (argc == 2)
+		return (split(argv[1], ' '));
+	return (argv);
+}	
 int	main(int argc, char **argv)
 {
 	t_stack_node	*stack_a;
@@ -24,7 +31,7 @@ int	main(int argc, char **argv)
 		return (1);
 	else if (argc == 2)
 		argv = split(argv[1], ' ');
-	init_stack_a(&stack_a, &argv[1]);
+	init_stack_a(&stack_a, argv + 1);
 	if(!is_sorted(stack_a))
 	{
 		if(stack_len(stack_a) == 2)

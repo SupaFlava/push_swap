@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:12:03 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/14 12:16:24 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/19 17:44:06 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,6 @@ void    sort_three(t_stack_node **a)
         ra(a,false);
     else if(biggest == (*a)->next)
         rra(a, false);
+    if ((*a)->nbr > (*a)->next->nbr)
+        sa(a,false);
 }

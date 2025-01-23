@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:08:40 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/15 19:30:32 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/19 17:35:31 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,15 @@
 static void rotate(t_stack_node **stack)
 {
     t_stack_node *last_node;
-    t_stack_node *first_node;
 
     if (!*stack || !(*stack)->next)
         return ;
-    first_node = *stack;
-    last_node =find_last(*stack);
-    *stack = first_node->next;
+    last_node = find_last(*stack);
+    last_node->next = *stack;
+    *stack = (*stack)->next;
     (*stack)->prev = NULL;
-    last_node->next = first_node;
-    first_node->prev = last_node;
-    first_node->next = NULL;
+    last_node->next->prev = last_node;
+    last_node->next->next = NULL;
 }
 
 void ra(t_stack_node **a, bool print)

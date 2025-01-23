@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:43:12 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/15 19:27:37 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/19 17:31:20 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static void rev_rotate(t_stack_node **stack)
     t_stack_node *last_node;
 
     if(!*stack || !(*stack)->next)
-        return;
+        return ;
     last_node = find_last(*stack);
-    last_node->prev->next = NULL; // 9bal le5ra
+    last_node->prev->next = NULL;
     last_node->next = *stack;
     last_node->prev = NULL;
     *stack = last_node;

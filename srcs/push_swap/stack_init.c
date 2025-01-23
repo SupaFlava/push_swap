@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 21:27:38 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/19 13:31:27 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/19 17:58:20 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ static void append_node(t_stack_node **stack, int value)
     new_node = malloc(sizeof(t_stack_node));
     if (!new_node)
         return ;
+    new_node->next = NULL;
     new_node->nbr = value;
     new_node->cheapest = 0;
-    new_node->next = NULL;
     if(!(*stack))
     {
         *stack = new_node;

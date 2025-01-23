@@ -10,6 +10,8 @@ OBJ_DIR				= obj/
 # Compiler and CFlags
 CC					= cc
 CFLAGS				= -Wall -Werror -Wextra -g -I
+# Should *not* see -fsanitize=address
+
 RM					= rm -f
 
 # Source Files

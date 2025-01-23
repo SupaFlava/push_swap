@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 21:15:23 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/17 11:57:31 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/19 17:52:11 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_stack_node
 {
     int nbr;
     int index;
-    int push_coast;
+    int push_cost;
     bool    above_median;
     bool    cheapest;
     struct  s_stack_node  *target_node;

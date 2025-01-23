@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:16:42 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/19 12:55:43 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/19 17:52:43 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ static void cost_analysis_a(t_stack_node *a, t_stack_node *b)
     
     while (a)
     {
-        a->push_coast = a->index;
+        a->push_cost = a->index;
         if(!(a->above_median))
-            a->push_coast = len_a - (a->index);
+            a->push_cost = len_a - (a->index);
         if (a->target_node->above_median)
-            a->push_coast += a->target_node->index;
+            a->push_cost += a->target_node->index;
         else
-            a->push_coast += len_b - (a->target_node->index);
+            a->push_cost += len_b - (a->target_node->index);
         a = a->next;
     }
 }
@@ -90,9 +90,9 @@ void    set_cheapest(t_stack_node *stack)
     cheapest_value = LONG_MAX;
     while (stack)
     {
-        if (stack->push_coast < cheapest_value)
+        if (stack->push_cost < cheapest_value)
         {
-            cheapest_value = stack->push_coast;
+            cheapest_value = stack->push_cost;
             cheapest_node = stack;
         }
         stack = stack->next;
