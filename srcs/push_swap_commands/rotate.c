@@ -6,12 +6,11 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:08:40 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/19 17:35:31 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:28:01 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-//rotate top node with bottom one
 
 static void rotate(t_stack_node **stack)
 {
@@ -31,19 +30,19 @@ void ra(t_stack_node **a, bool print)
 {
     rotate(a);
     if (!print)
-        printf("ra\n");
+        ft_printf("ra\n");
 }
 
 void    rb(t_stack_node **b, bool print)
 {
     rotate(b);
      if(!print)
-        printf("rb\n");
+        ft_printf("rb\n");
 }
 void    rr(t_stack_node **a, t_stack_node **b, bool print)
 {
     rotate(a);
     rotate(b);
     if(!print)
-        printf("rr\n");
+        ft_printf("rr\n");
 }

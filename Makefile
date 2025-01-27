@@ -9,7 +9,7 @@ OBJ_DIR				= obj/
 
 # Compiler and CFlags
 CC					= cc
-CFLAGS				= -Wall -Werror -Wextra -g -I
+CFLAGS				= -Wall -Werror -Wextra -g -I includes -I libft/includes
 # Should *not* see -fsanitize=address
 
 RM					= rm -f
@@ -46,12 +46,12 @@ $(LIBFT):
 all: 				$(NAME)
 
 $(NAME): 			$(OBJ) $(LIBFT)
-					@$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT) -o $(NAME)
+					@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
 # Compile object files from source files
 $(OBJ_DIR)%.o:		$(SRC_DIR)%.c 
 					@mkdir -p $(@D)
-					@$(CC) $(CFLAGS) $(INC) -c $< -o $@
+					@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 					@$(RM) -r $(OBJ_DIR)

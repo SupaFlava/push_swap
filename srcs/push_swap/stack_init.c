@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 21:27:38 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/19 17:58:20 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:57:33 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,21 +74,21 @@ t_stack_node *get_cheapest(t_stack_node *stack)
     return (NULL);
 }
 
-void    init_stack_a(t_stack_node **a, char **argv)
+void	init_stack_a(t_stack_node **a, char **argv)
 {
     long    number;
     int     i;
 
     i = 0;
-    while(argv[i])
+    while (argv[i])
     {
         if (syntax_error(argv[i]))
-			free_error(a);
+			error_exit(a);
 		number = ft_atol(argv[i]);
 		if (number > INT_MAX || number <  INT_MIN)
-			free_error(a);
+			error_exit(a);
 		if (duplicate_error(*a, (int)number))
-			free_error(a);
+			error_exit(a);
 		append_node(a, (int)number);
 		i++; 
     }

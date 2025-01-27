@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_printf_utils_chars.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 14:41:53 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/27 13:11:32 by rmhazres         ###   ########.fr       */
+/*   Created: 2024/11/11 11:27:56 by rmhazres          #+#    #+#             */
+/*   Updated: 2025/01/27 13:26:06 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "ft_printf.h"
+
+int	ft_putchar(char c)
 {
-	if (c >= '0' && c <= '9')
-		return (c);
-	return (0);
+	if (write(1, &c, 1) == -1)
+		return (-1);
+	return (1);
 }
 
-// #include <stdio.h>
-// int main()
-// {
-//     int result;
-//     result = ft_isdigit('c');
-//     ft_printf("%d", result);
-// }
+int	ft_putstr(char *str)
+{
+	unsigned int	len;
+
+	len = 0;
+	if (!str)
+		str = "(null)";
+	while (str[len])
+		len++;
+	if (write(1, str, len) == -1)
+		return (-1);
+	return (len);
+}
