@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 21:27:38 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/29 17:19:16 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/29 17:51:16 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,12 @@ void	init_stack_a(t_stack_node **a, char **argv)
 	while (argv[i])
 	{
 		if (syntax_error(argv[i]))
-			error_exit(a , argv);
+			error_exit(a );
 		number = ft_atol(argv[i]);
 		if (number > INT_MAX || number <  INT_MIN)
-			error_exit(a , argv);
+			error_exit(a);
 		if (duplicate_error(*a, (int)number))
-			error_exit(a, argv);
+			error_exit(a);
 		append_node(a, (int)number);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:39:30 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/29 17:22:01 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/29 17:50:05 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,9 @@ void free_args(char **argv)
 	}
 	free(argv);
 }
-void error_exit(t_stack_node **a, char **argv)
+void error_exit(t_stack_node **a)
 {
     free_stack(a);
-	if (argv)
-		free_args(argv);
     ft_putstr_fd("Error\n", 2);
     exit(1);
 }
