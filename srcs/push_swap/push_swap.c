@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 11:46:28 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/27 15:22:38 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/29 17:37:06 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,23 @@
 
 
 
+
 int	main(int argc, char **argv)
 {
 	t_stack_node	*stack_a;
 	t_stack_node	*stack_b;
+	char 			**new_args;
+	int				is_split;
 
+	is_split = 0;
 	stack_a = NULL;
 	stack_b = NULL;
-
+	new_args = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
-	{
-		write(2, "Error\n",6);
-		return (1);
-	}
+		return (ft_putstr_fd("Error\n",2),1);
 	else if (argc == 2)
-		argv = split(argv[1], ' ');
-	init_stack_a(&stack_a, argv + 1);
+		new_args = ft_split(argv[1],' ');
+	init_stack_a(&stack_a, new_args + 1);
 	if (!is_sorted(stack_a))
 	{
 		if (stack_len(stack_a) == 2)
@@ -40,6 +41,6 @@ int	main(int argc, char **argv)
 			sort_stacks(&stack_a, &stack_b);
 	}
 	free_stack(&stack_a);
-	free_stack(&stack_b);
+	free_args(new_args);
 	return (0);
 }

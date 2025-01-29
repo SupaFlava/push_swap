@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 21:15:23 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/27 14:57:20 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/29 17:22:32 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,25 @@
 # include "../libft/includes/libft.h"
 # include "../libft/includes/ft_printf.h"
 # include <stdlib.h>
-// to include 
+
 typedef struct s_stack_node
 {
-    int nbr;
-    int index;
-    int push_cost;
-    bool    above_median;
-    bool    cheapest;
-    struct  s_stack_node  *target_node;
-    struct  s_stack_node   *next;
-    struct  s_stack_node    *prev;
+    int					nbr;
+	int						index;
+	int						push_cost;
+	bool    				above_median;
+	bool    				cheapest;
+	struct s_stack_node  	*target_node;
+	struct s_stack_node   	*next;
+	struct s_stack_node    	*prev;
 } t_stack_node;
 
-int				syntax_error(char *string); 
+int				syntax_error(char *string);
 int				duplicate_error(t_stack_node *a, int n);
 void			free_stack(t_stack_node **stack);
-void			error_exit(t_stack_node **a);
+void				error_exit(t_stack_node **a, char **argv);
+void				 free_args(char **argv);
+
 
 void			init_stack_a(t_stack_node **a, char **argv); 
 char			**split(char *s, char c);
@@ -49,10 +51,10 @@ void			sort_three(t_stack_node **a);
 void    sort_stacks(t_stack_node **a, t_stack_node **b);
 
 
-int				stack_len(t_stack_node *stack); 
-t_stack_node	*find_last(t_stack_node *stack); 
+int				stack_len(t_stack_node *stack);
+t_stack_node	*find_last(t_stack_node *stack);
 bool			is_sorted(t_stack_node *stack);
-t_stack_node	*find_min(t_stack_node *stack); 
+t_stack_node	*find_min(t_stack_node *stack);
 t_stack_node	*find_max(t_stack_node *stack);
 void			sa(t_stack_node **a, bool print);
 void			sb(t_stack_node **b, bool print);
@@ -66,6 +68,6 @@ void			rrr(t_stack_node **a, t_stack_node **b, bool print);
 void			pa(t_stack_node **a, t_stack_node **b, bool print);
 void			pb(t_stack_node **b, t_stack_node **a, bool print);
 
-t_stack_node *find_min(t_stack_node *stack);
+t_stack_node	*find_min(t_stack_node *stack);
 
 #endif
