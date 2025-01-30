@@ -6,43 +6,44 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:08:40 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/27 14:28:01 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:57:35 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static void rotate(t_stack_node **stack)
+static void	rotate(t_stack_node **stack)
 {
-    t_stack_node *last_node;
+	t_stack_node	*last_node;
 
-    if (!*stack || !(*stack)->next)
-        return ;
-    last_node = find_last(*stack);
-    last_node->next = *stack;
-    *stack = (*stack)->next;
-    (*stack)->prev = NULL;
-    last_node->next->prev = last_node;
-    last_node->next->next = NULL;
+	if (!*stack || !(*stack)->next)
+		return ;
+	last_node = find_last(*stack);
+	last_node->next = *stack;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	last_node->next->prev = last_node;
+	last_node->next->next = NULL;
 }
 
-void ra(t_stack_node **a, bool print)
+void	ra(t_stack_node **a, bool print)
 {
-    rotate(a);
-    if (!print)
-        ft_printf("ra\n");
+	rotate(a);
+	if (!print)
+		ft_printf("ra\n");
 }
 
-void    rb(t_stack_node **b, bool print)
+void	rb(t_stack_node **b, bool print)
 {
-    rotate(b);
-     if(!print)
-        ft_printf("rb\n");
+	rotate(b);
+	if (!print)
+		ft_printf("rb\n");
 }
-void    rr(t_stack_node **a, t_stack_node **b, bool print)
+
+void	rr(t_stack_node **a, t_stack_node **b, bool print)
 {
-    rotate(a);
-    rotate(b);
-    if(!print)
-        ft_printf("rr\n");
+	rotate(a);
+	rotate(b);
+	if (!print)
+		ft_printf("rr\n");
 }

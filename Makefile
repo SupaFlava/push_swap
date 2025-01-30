@@ -9,7 +9,7 @@ OBJ_DIR				= obj/
 
 # Compiler and CFlags
 CC					= cc
-CFLAGS				= -Wall -Werror -Wextra -g -I includes -I libft/includes
+CFLAGS				= -Wall -Werror -Wextra -g -I includes -I libft/includes -g
 # Should *not* see -fsanitize=address
 
 RM					= rm -f

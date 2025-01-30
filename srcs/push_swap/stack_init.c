@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 21:27:38 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/29 17:51:16 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:58:18 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ static long	ft_atol(const char *s)
 
 	result = 0;
 	sign = 1;
-	while (*s == ' ' || *s == '\t' 
-		|| *s == '\n' || *s == '\r'
-		|| *s == '\v') 
+	while (*s == ' ' || *s == '\t' || *s == '\n' || \
+				*s == '\r' || *s == '\f' || *s == '\v')
 		s++;
 	if (*s == '-' || *s == '+')
 	{
@@ -76,7 +75,8 @@ t_stack_node	*get_cheapest(t_stack_node *stack)
 	return (NULL);
 }
 
-void	init_stack_a(t_stack_node **a, char **argv)
+
+void	init_stack_a(t_stack_node **a, char **argv, char **split_args)
 {
 	long	number;
 	int     i;
@@ -85,9 +85,9 @@ void	init_stack_a(t_stack_node **a, char **argv)
 	while (argv[i])
 	{
 		if (syntax_error(argv[i]))
-			error_exit(a );
+			handle_init_error(a, split_args);
 		number = ft_atol(argv[i]);
-		if (number > INT_MAX || number <  INT_MIN)
+		if (number > INT_MAX || number < INT_MIN)
 			error_exit(a);
 		if (duplicate_error(*a, (int)number))
 			error_exit(a);

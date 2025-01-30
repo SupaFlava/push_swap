@@ -6,7 +6,7 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 21:15:23 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/29 17:50:27 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:54:50 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ void				error_exit(t_stack_node **a);
 void				 free_args(char **argv);
 
 
-void			init_stack_a(t_stack_node **a, char **argv); 
+void			init_stack_a(t_stack_node **a, char **argv , char **split_args);
+void		handle_init_error(t_stack_node **a, char **split_args);
+
 char			**split(char *s, char c);
 
 void			initialize_nodes_a(t_stack_node *a, t_stack_node *b); 
@@ -48,7 +50,7 @@ void			set_cheapest(t_stack_node *stack);
 t_stack_node	*get_cheapest(t_stack_node *stack);
 void			prep_for_push(t_stack_node **s, t_stack_node *n, char c);
 void			sort_three(t_stack_node **a);
-void    sort_stacks(t_stack_node **a, t_stack_node **b);
+void    		sort_stacks(t_stack_node **a, t_stack_node **b);
 
 
 int				stack_len(t_stack_node *stack);
