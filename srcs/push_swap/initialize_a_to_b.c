@@ -6,13 +6,13 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:16:42 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/29 12:34:33 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/02/06 11:13:44 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	current_index(t_stack_node *stack)
+void	current_index(t_s_node *stack)
 {
 	int	i;
 	int	median;
@@ -33,11 +33,11 @@ void	current_index(t_stack_node *stack)
 	}
 }
 
-static void	set_target_a(t_stack_node *a, t_stack_node *b)
+static void	set_target_a(t_s_node *a, t_s_node *b)
 {
-	t_stack_node	*current_node_b;
-	t_stack_node	*target_node;
-	long			best_match_index;
+	t_s_node	*current_node_b;
+	t_s_node	*target_node;
+	long		best_match_index;
 
 	while (a)
 	{
@@ -61,14 +61,13 @@ static void	set_target_a(t_stack_node *a, t_stack_node *b)
 	}
 }
 
-static void	cost_analysis_a(t_stack_node *a, t_stack_node *b)
+static void	calculate_costs_a_to_b(t_s_node *a, t_s_node *b)
 {
 	int	len_a;
 	int	len_b;
 
 	len_a = stack_len(a);
 	len_b = stack_len(b);
-
 	while (a)
 	{
 		a->push_cost = a->index;
@@ -82,10 +81,10 @@ static void	cost_analysis_a(t_stack_node *a, t_stack_node *b)
 	}
 }
 
-void	set_cheapest(t_stack_node *stack)
+void	set_cheapest(t_s_node *stack)
 {
+	t_s_node		*cheapest_node;
 	long			cheapest_value;
-	t_stack_node	*cheapest_node;
 
 	if (!stack)
 		return ;
@@ -102,11 +101,11 @@ void	set_cheapest(t_stack_node *stack)
 	cheapest_node->cheapest = true;
 }
 
-void	initialize_nodes_a(t_stack_node *a, t_stack_node *b)
+void	update_nodes_a(t_s_node *a, t_s_node *b)
 {
 	current_index(a);
 	current_index(b);
 	set_target_a(a, b);
-	cost_analysis_a(a,b);
+	calculate_costs_a_to_b(a, b);
 	set_cheapest(a);
 }

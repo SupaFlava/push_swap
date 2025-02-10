@@ -6,44 +6,20 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 21:27:38 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/30 16:58:18 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/02/10 11:02:21 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static long	ft_atol(const char *s)
+static void	append_node(t_s_node **stack, int value)
 {
-	long	result;
-	int     sign;
-
-	result = 0;
-	sign = 1;
-	while (*s == ' ' || *s == '\t' || *s == '\n' || \
-				*s == '\r' || *s == '\f' || *s == '\v')
-		s++;
-	if (*s == '-' || *s == '+')
-	{
-		if (*s == '-')
-			sign = -1;
-		s++;
-	}
-	while (ft_isdigit(*s))
-	{
-		result = result * 10 + (*s - '0');
-		s++;
-	}
-	return (result * sign);
-}
-
-static void append_node(t_stack_node **stack, int value)
-{
-	t_stack_node	*new_node;
-	t_stack_node	*last_node;
+	t_s_node	*new_node;
+	t_s_node	*last_node;
 
 	if (!stack)
 		return ;
-	new_node = malloc(sizeof(t_stack_node));
+	new_node = malloc(sizeof(t_s_node));
 	if (!new_node)
 		return ;
 	new_node->next = NULL;
@@ -62,7 +38,7 @@ static void append_node(t_stack_node **stack, int value)
 	}
 }
 
-t_stack_node	*get_cheapest(t_stack_node *stack)
+t_s_node	*get_cheapest(t_s_node *stack)
 {
 	if (!stack)
 		return (NULL);
@@ -75,19 +51,18 @@ t_stack_node	*get_cheapest(t_stack_node *stack)
 	return (NULL);
 }
 
-
-void	init_stack_a(t_stack_node **a, char **argv, char **split_args)
+void	init_stack_a(t_s_node **a, char **argv)
 {
 	long	number;
-	int     i;
+	int		i;
 
 	i = 0;
 	while (argv[i])
 	{
 		if (syntax_error(argv[i]))
-			handle_init_error(a, split_args);
-		number = ft_atol(argv[i]);
-		if (number > INT_MAX || number < INT_MIN)
+			error_exit(a);
+		number = ft_atol(argv[i], a);
+		if (number > LONG_MAX || number < LONG_MIN)
 			error_exit(a);
 		if (duplicate_error(*a, (int)number))
 			error_exit(a);
@@ -96,23 +71,23 @@ void	init_stack_a(t_stack_node **a, char **argv, char **split_args)
 	}
 }
 
-void	prep_for_push(t_stack_node **stack, t_stack_node *top_node, char s_name)
+void	align_node_to_top(t_s_node **stack, t_s_node *top, char name)
 {
-	while (*stack != top_node)
+	while (*stack != top)
 	{
-		if (s_name == 'a')
+		if (name == 'a')
 		{
-			if (top_node->above_median)
-				ra(stack, false);
+			if (top->above_median)
+				ra(stack);
 			else
-				rra(stack, false);
+				rra(stack);
 		}
-		else if (s_name == 'b')
+		else if (name == 'b')
 		{
-			if (top_node->above_median)
-				rb(stack, false);
+			if (top->above_median)
+				rb(stack);
 			else
-				rrb(stack, false);
+				rrb(stack);
 		}
 	}
 }

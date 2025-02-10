@@ -1,45 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   free_handling.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 09:34:50 by rmhazres          #+#    #+#             */
+/*   Created: 2025/02/03 13:14:09 by rmhazres          #+#    #+#             */
 /*   Updated: 2025/02/03 15:37:42 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static void	swap(t_s_node **head)
+void	free_stack(t_s_node **stack)
 {
-	if (!head || !(*head)->next)
+	t_s_node	*temp;
+	t_s_node	*current;
+
+	if (!stack)
 		return ;
-	*head = (*head)->next;
-	(*head)->prev->prev = *head;
-	(*head)->prev->next = (*head)->next;
-	if ((*head)->next)
-		(*head)->next->prev = (*head)->prev;
-	(*head)->next = (*head)->prev;
-	(*head)->prev = NULL;
+	current = *stack;
+	while (current)
+	{
+		temp = current->next;
+		current->nbr = 0;
+		free(current);
+		current = temp;
+	}
+	*stack = NULL;
 }
 
-void	sa(t_s_node **a)
+void	free_args(char **argv)
 {
-	swap(a);
-	ft_printf("sa\n");
-}
+	int	i;
 
-void	sb(t_s_node **b)
-{
-	swap(b);
-	ft_printf("sb\n");
-}
-
-void	ss(t_s_node **a, t_s_node **b)
-{
-	swap(a);
-	swap(b);
-	ft_printf("ss\n");
+	i = 0;
+	while (argv[i])
+	{
+		free(argv[i]);
+		i++;
+	}
+	free(argv);
 }

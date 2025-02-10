@@ -6,15 +6,15 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:25:35 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/29 14:37:33 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:37:42 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static void	push(t_stack_node **dest, t_stack_node **src)
+static void	push(t_s_node **dest, t_s_node **src)
 {
-	t_stack_node	*to_push;
+	t_s_node	*to_push;
 
 	if (!*src)
 		return ;
@@ -32,20 +32,18 @@ static void	push(t_stack_node **dest, t_stack_node **src)
 	{
 		to_push->next = *dest;
 		to_push->next->prev = to_push;
-		*dest = to_push; 
+		*dest = to_push;
 	}
 }
 
-void	pa(t_stack_node **a, t_stack_node **b, bool print)
+void	pa(t_s_node **a, t_s_node **b)
 {
 	push(a, b);
-	if (!print)
-		ft_printf("pa\n");
+	ft_printf("pa\n");
 }
 
-void	pb(t_stack_node **b, t_stack_node **a, bool print)
+void	pb(t_s_node **b, t_s_node **a)
 {
 	push(b, a);
-	if (!print)
-		ft_printf("pb\n");
+	ft_printf("pb\n");
 }

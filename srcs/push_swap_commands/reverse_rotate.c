@@ -6,15 +6,15 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:43:12 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/30 15:57:01 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:37:42 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static void	rev_rotate(t_stack_node **stack)
+static void	rev_rotate(t_s_node **stack)
 {
-	t_stack_node	*last_node;
+	t_s_node	*last_node;
 
 	if (!*stack || !(*stack)->next)
 		return ;
@@ -26,24 +26,21 @@ static void	rev_rotate(t_stack_node **stack)
 	last_node->next->prev = last_node;
 }
 
-void	rra(t_stack_node **a, bool print)
+void	rra(t_s_node **a)
 {
 	rev_rotate(a);
-	if (!print)
-		ft_printf("rra\n");
+	ft_printf("rra\n");
 }
 
-void	rrb(t_stack_node **b, bool print)
+void	rrb(t_s_node **b)
 {
 	rev_rotate(b);
-	if (!print)
-		ft_printf("rrb\n");
+	ft_printf("rrb\n");
 }
 
-void	rrr(t_stack_node **a,t_stack_node **b,bool print)
+void	rrr(t_s_node **a, t_s_node **b)
 {
 	rev_rotate(a);
 	rev_rotate(b);
-	if (!print)
-		ft_printf("rrr\n");
+	ft_printf("rrr\n");
 }

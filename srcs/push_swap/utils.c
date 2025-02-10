@@ -6,13 +6,13 @@
 /*   By: rmhazres <rmhazres@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 09:25:12 by rmhazres          #+#    #+#             */
-/*   Updated: 2025/01/29 13:21:32 by rmhazres         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:39:07 by rmhazres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-bool	is_sorted(t_stack_node *stack)
+bool	is_sorted(t_s_node *stack)
 {
 	if (!stack)
 		return (1);
@@ -25,9 +25,9 @@ bool	is_sorted(t_stack_node *stack)
 	return (true);
 }
 
-int	stack_len(t_stack_node *stack)
+int	stack_len(t_s_node *stack)
 {
-	int i;
+	int	i;
 
 	if (!stack)
 		return (1);
@@ -40,10 +40,10 @@ int	stack_len(t_stack_node *stack)
 	return (i);
 }
 
-t_stack_node	*find_max(t_stack_node *stack)
+t_s_node	*find_max(t_s_node *stack)
 {
 	long			max_num;
-	t_stack_node	*max_node;
+	t_s_node		*max_node;
 
 	if (!stack)
 		return (NULL);
@@ -60,7 +60,7 @@ t_stack_node	*find_max(t_stack_node *stack)
 	return (max_node);
 }
 
-t_stack_node	*find_last(t_stack_node *stack)
+t_s_node	*find_last(t_s_node *stack)
 {
 	if (!stack)
 		return (NULL);
@@ -69,10 +69,10 @@ t_stack_node	*find_last(t_stack_node *stack)
 	return (stack);
 }
 
-t_stack_node	*find_min(t_stack_node *stack)
+t_s_node	*find_min(t_s_node *stack)
 {
-	long			min;
-	t_stack_node	*min_node;
+	long		min;
+	t_s_node	*min_node;
 
 	if (!stack)
 		return (NULL);
